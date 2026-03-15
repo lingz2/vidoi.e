@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Feedback</title>
+
+<style>
+
+body{
+background:#111;
+color:white;
+font-family:Arial;
+text-align:center;
+}
+
+h2{
+margin-top:40px;
+}
+
+input,textarea{
+width:300px;
+padding:12px;
+margin:10px;
+border-radius:6px;
+border:none;
+}
+
+button{
+padding:12px 35px;
+border:none;
+border-radius:8px;
+cursor:pointer;
+font-size:16px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h2>Isi Feedback Dulu</h2>
+
+<form action="https://formsubmit.co/EMAILKAMU@gmail.com" method="POST">
+
+<input type="text" name="name" placeholder="Nama" required><br>
+
+<input type="email" name="email" placeholder="Email" required><br>
+
+<textarea name="message" placeholder="Feedback"></textarea><br>
+
+<input type="hidden" name="_next" value="download.html">
+
+<button type="submit">Kirim</button>
+
+</form>
+
+</body>
+</html>

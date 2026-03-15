@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>VIDOI</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+background:radial-gradient(circle at top,#222,#000);
+color:white;
+text-align:center;
+}
+
+/* HEADER */
+
+.header{
+padding:40px 20px;
+}
+
+.logo{
+width:70px;
+margin-bottom:10px;
+}
+
+.brand{
+font-size:32px;
+font-weight:bold;
+letter-spacing:3px;
+color:#ff7a4a;
+}
+
+/* VIDEO CARD */
+
+.container{
+display:flex;
+justify-content:center;
+margin-top:20px;
+}
+
+.card{
+
+background:#141414;
+width:340px;
+border-radius:20px;
+overflow:hidden;
+
+box-shadow:0 20px 60px rgba(0,0,0,0.8);
+
+transition:0.3s;
+}
+
+.card:hover{
+transform:scale(1.03);
+}
+
+.thumbnail{
+width:100%;
+cursor:pointer;
+}
+
+/* PLAY ICON */
+
+.play{
+position:absolute;
+font-size:60px;
+color:white;
+left:50%;
+top:50%;
+transform:translate(-50%,-50%);
+opacity:0.9;
+}
+
+.video-box{
+position:relative;
+}
+
+/* CAPTION */
+
+.caption{
+padding:15px;
+color:#bbb;
+font-style:italic;
+}
+
+/* DOWNLOAD BUTTON */
+
+.download{
+margin-top:30px;
+}
+
+.download button{
+
+background:linear-gradient(45deg,#ffffff,#d9d9d9);
+color:black;
+
+padding:16px 45px;
+
+font-size:18px;
+
+border:none;
+
+border-radius:12px;
+
+cursor:pointer;
+
+font-weight:bold;
+
+box-shadow:0 10px 25px rgba(0,0,0,0.5);
+
+transition:0.3s;
+}
+
+.download button:hover{
+transform:scale(1.05);
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+
+<img src="logo.png" class="logo">
+
+<div class="brand">VIDOI</div>
+
+</div>
+
+<div class="container">
+
+<div class="card">
+
+<a href="feedback.html">
+
+<div class="video-box">
+
+<img src="thumbnail.jpg" class="thumbnail">
+
+<div class="play">▶</div>
+
+</div>
+
+</a>
+
+<div class="caption">
+
+30 Days of Daily Creatine
+
+</div>
+
+</div>
+
+</div>
+
+<div class="download">
+
+<a href="feedback.html">
+
+<button>DOWNLOAD MP4</button>
+
+</a>
+
+</div>
+
+</body>
+</html>
