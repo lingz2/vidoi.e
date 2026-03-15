@@ -1,171 +1,287 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-<meta charset="UTF-8">
-<title>VIDOI</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIDOI - Premium Video Platform</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-<style>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: #0f0f0f;
+            color: white;
+            padding-bottom: 40px;
+        }
 
-body{
-margin:0;
-font-family:Arial;
-background:radial-gradient(circle at top,#222,#000);
-color:white;
-text-align:center;
-}
+        /* HEADER */
+        .header {
+            text-align: center;
+            padding: 20px;
+            font-size: 28px;
+            font-weight: 800;
+            color: #ff7a4a;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
 
-/* HEADER */
+        .container {
+            width: 95%;
+            max-width: 500px;
+            margin: auto;
+        }
 
-.header{
-padding:40px 20px;
-}
+        /* MAIN VIDEO CARD */
+        .main-card {
+            background: #1a1a1a;
+            border-radius: 18px;
+            overflow: hidden;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
 
-.logo{
-width:70px;
-margin-bottom:10px;
-}
+        .thumb-container {
+            position: relative;
+            display: block;
+            cursor: pointer;
+        }
 
-.brand{
-font-size:32px;
-font-weight:bold;
-letter-spacing:3px;
-color:#ff7a4a;
-}
+        .thumb-container img {
+            width: 100%;
+            display: block;
+        }
 
-/* VIDEO CARD */
+        .duration {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+            color: white !important;
+        }
 
-.container{
-display:flex;
-justify-content:center;
-margin-top:20px;
-}
+        .big-play {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 50px;
+            color: rgba(255, 255, 255, 0.9);
+            text-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
 
-.card{
+        .main-info {
+            padding: 15px;
+        }
 
-background:#141414;
-width:340px;
-border-radius:20px;
-overflow:hidden;
+        .main-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #fff;
+        }
 
-box-shadow:0 20px 60px rgba(0,0,0,0.8);
+        .stats-row {
+            display: flex;
+            gap: 15px;
+            font-size: 13px;
+            color: #aaa;
+            margin-bottom: 15px;
+        }
 
-transition:0.3s;
-}
+        .stats-row span i {
+            margin-right: 4px;
+            color: #ff7a4a;
+        }
 
-.card:hover{
-transform:scale(1.03);
-}
+        .btn-download {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 12px;
+            background: #ff7a4a;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 15px;
+            cursor: pointer;
+            transition: 0.2s;
+            text-decoration: none;
+        }
 
-.thumbnail{
-width:100%;
-cursor:pointer;
-}
+        .btn-download:hover { background: #e66a3e; }
 
-/* PLAY ICON */
+        .section-title {
+            font-size: 18px;
+            margin: 25px 0 15px 5px;
+            color: #fff;
+            border-left: 4px solid #ff7a4a;
+            padding-left: 10px;
+        }
 
-.play{
-position:absolute;
-font-size:60px;
-color:white;
-left:50%;
-top:50%;
-transform:translate(-50%,-50%);
-opacity:0.9;
-}
+        .video-item {
+            display: flex;
+            background: #1a1a1a;
+            margin-bottom: 12px;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: 0.3s;
+            text-decoration: none;
+            color: white;
+        }
 
-.video-box{
-position:relative;
-}
+        .video-item:hover {
+            background: #252525;
+            transform: translateY(-2px);
+        }
 
-/* CAPTION */
+        .side-thumb {
+            position: relative;
+            width: 140px;
+            min-width: 140px;
+            height: 80px;
+        }
 
-.caption{
-padding:15px;
-color:#bbb;
-font-style:italic;
-}
+        .side-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
 
-/* DOWNLOAD BUTTON */
+        .side-info {
+            padding: 8px 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
 
-.download{
-margin-top:30px;
-}
+        .side-title {
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 6px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
 
-.download button{
+        .side-stats {
+            font-size: 11px;
+            color: #888;
+            display: flex;
+            gap: 8px;
+        }
 
-background:linear-gradient(45deg,#ffffff,#d9d9d9);
-color:black;
+        .side-stats i { color: #ff7a4a; }
 
-padding:16px 45px;
+        /* PAGINATION STYLES */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            margin-top: 30px;
+            padding: 10px;
+        }
 
-font-size:18px;
+        .pagination a {
+            text-decoration: none;
+            color: white;
+            background: #1a1a1a;
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: bold;
+            transition: 0.3s;
+            border: 1px solid #333;
+        }
 
-border:none;
+        .pagination a:hover {
+            background: #ff7a4a;
+            border-color: #ff7a4a;
+        }
 
-border-radius:12px;
+        .pagination a.active {
+            background: #ff7a4a;
+            border-color: #ff7a4a;
+        }
 
-cursor:pointer;
-
-font-weight:bold;
-
-box-shadow:0 10px 25px rgba(0,0,0,0.5);
-
-transition:0.3s;
-}
-
-.download button:hover{
-transform:scale(1.05);
-}
-
-</style>
-
+        .pagination .prev-next {
+            background: #252525;
+        }
+    </style>
 </head>
-
 <body>
 
-<div class="header">
+    <div class="header">VIDOI</div>
 
-<img src="logo.png" class="logo">
+    <div class="container">
+        <div class="main-card">
+            <a href="login.html" class="thumb-container">
+                <img src="thumbnail.jpg" alt="Isi dengan nama file gambar kamu">
+                <div class="duration">12:45</div>
+                <div class="big-play"><i class="fas fa-play-circle"></i></div>
+            </a>
+            <div class="main-info">
+                <div class="main-title">Chudai</div>
+                <div class="stats-row">
+                    <span><i class="fas fa-eye"></i> 1.2M</span>
+                    <span><i class="fas fa-thumbs-up"></i> 45K</span>
+                    <span><i class="fas fa-cloud-download-alt"></i> 8.2K</span>
+                </div>
+                <a href="login.html" class="btn-download"><i class="fas fa-download"></i> DOWNLOAD MP4</a>
+            </div>
+        </div>
 
-<div class="brand">VIDOI</div>
+        <div class="section-title">Video Terkait</div>
 
-</div>
+        <a href="login.html" class="video-item">
+            <div class="side-thumb">
+                <img src="thumb2.jpg">
+                <div class="duration">05:20</div>
+                <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); opacity:0.8;"><i class="fas fa-play"></i></div>
+            </div>
+            <div class="side-info">
+                <div class="side-title">Hijab full percakapan setelah lamaran</div>
+                <div class="side-stats">
+                    <span><i class="fas fa-eye"></i> 850K</span>
+                    <span><i class="fas fa-thumbs-up"></i> 12K</span>
+                </div>
+            </div>
+        </a>
 
-<div class="container">
+        <a href="login.html" class="video-item">
+            <div class="side-thumb">
+                <img src="thumb3.jpg">
+                <div class="duration">08:15</div>
+                <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); opacity:0.8;"><i class="fas fa-play"></i></div>
+            </div>
+            <div class="side-info">
+                <div class="side-title">Dipaksa om karena sendirian di rumah</div>
+                <div class="side-stats">
+                    <span><i class="fas fa-eye"></i> 2.1M</span>
+                    <span><i class="fas fa-thumbs-up"></i> 98K</span>
+                </div>
+            </div>
+        </a>
 
-<div class="card">
+        <div class="pagination">
+            <a href="login.html" class="prev-next"><i class="fas fa-chevron-left"></i></a>
+            <a href="login.html" class="active">1</a>
+            <a href="login.html">2</a>
+            <a href="login.html">3</a>
+            <a href="login.html">4</a>
+            <a href="login.html" class="prev-next"><i class="fas fa-chevron-right"></i></a>
+        </div>
 
-<a href="feedback.html">
-
-<div class="video-box">
-
-<img src="thumbnail.jpg" class="thumbnail">
-
-<div class="play">▶</div>
-
-</div>
-
-</a>
-
-<div class="caption">
-
-30 Days of Daily Creatine
-
-</div>
-
-</div>
-
-</div>
-
-<div class="download">
-
-<a href="feedback.html">
-
-<button>DOWNLOAD MP4</button>
-
-</a>
-
-</div>
+    </div>
 
 </body>
 </html>
